@@ -1,7 +1,9 @@
+var data = require('../data/stub') || {};
+
 exports.getAll = function() {
-  return require('../data/list');
+    return data.list || [];
 }
 
 exports.getByName = function(recipeName) {
-  return require('../data/' + recipeName);
+    return data.individual[recipeName] || {};
 }
