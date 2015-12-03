@@ -3,7 +3,7 @@ var express   = require('express');
 
 var app = express();
 
-var Recipes = require('../models/recipe');
+var Recipe = require('../models/recipe');
 
 module.exports.controller = function(app) {
     /**
@@ -19,8 +19,17 @@ module.exports.controller = function(app) {
     /**
      * a home page route
      */
-      app.get('/recipes', function(req, res) {
-          // any logic goes here
-          res.render('recipes')
+      app.get('/recipes', function(request, response) {
+            response.render('recipes/recipes', {recipes: Recipe.getAll()})
+      });
+
+      /**
+     * single recipes
+     */
+      app.get('/recipes/:recipename', function(request, response) {
+            var recipeName = request.params.recipename,
+                recipeData = Recipe.getByName(recipeName);
+                
+          response.render('recipes/recipe', {recipe: recipeData});
       });
 }

@@ -1,13 +1,13 @@
 {
-  "name": "hello_world",
+  "name": "jls-bdd-recipes",
   "version": "1.0.0",
   "description": "Test App",
-  "main": "index.js",
+  "main": "app/recipes.js",
   "scripts": {
-    "start": "node app/hello_world.js",
+    "start": "node app/recipes.js",
     "test": "./node_modules/.bin/jasmine-node spec"
   },
-  "author": "",
+  "author": "Jenny Sharps",
   "license": "ISC",
   "dependencies": {
     "express": "^4.13.3",
