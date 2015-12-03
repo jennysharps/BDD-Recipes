@@ -6,4 +6,5 @@ A Behavior-Driven Recipe app. Uses [jasmine-node](https://github.com/mhevery/jas
   $ git clone https://github.com/jennysharps/BDD-Recipes.git
   $ cd BDD-Recipes
   $ npm install
+  $ npm start
 ```
