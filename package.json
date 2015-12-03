@@ -11,10 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.13.3",
-    "history": "^1.13.1",
     "jade": "^1.11.0",
     "jasmine-node": "^1.14.5",
-    "react-router": "^1.0.0",
     "request": "^2.67.0"
   },
   "devDependencies": {}
