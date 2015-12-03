@@ -3,7 +3,7 @@ A Behavior-Driven Recipe app. Uses [Cucumber.js](https://github.com/cucumber/cuc
 
 ## Installation
 ``` bash
-  $ git clone https://github.com/jennyhsarps/BDD-Recipes.git
+  $ git clone https://github.com/jennysharps/BDD-Recipes.git
   $ cd BDD-Recipes
   $ npm install
 ```
