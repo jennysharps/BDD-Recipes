@@ -19,7 +19,8 @@ app.use(
   })
 );
 
-app.use(minify());
+/* The line below should be strung on when not in dev mode */
+// .use(minify());
 
 app.use(express.static(path.join(__dirname, '/../public')));
 

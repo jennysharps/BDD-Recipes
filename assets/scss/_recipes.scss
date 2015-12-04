@@ -1,0 +1,147 @@
+.recipe-header, .recipe-list {
+    padding: 0 6px;
+}
+
+.recipe-header {
+    background: #eee;
+    width: 100%;
+    display: table;
+
+    .col {
+        display: table-cell;
+        vertical-align: middle;
+
+        & * {
+            display: inline-block;
+        }
+    }
+
+    .recipe-header-title {
+        font-size: 16px;
+    }
+
+    .recipe-header-input {
+        margin: 6px 15px;
+        padding: 5px;
+        font-size: 11px;
+    }
+
+    .recipe-header-sort-btn-container {
+        text-align: right;
+    }
+
+    #recipe-sort-btn {
+        border: none;
+        font-size: 11px;
+        line-height: normal;
+        font-weight: bold;
+        background: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+}
+
+.recipe-list-item, .recipe-list-item a {
+    display: table;
+    width: 100%;
+    border-spacing: 2px;
+    border-collapse: separate;
+    text-decoration: none;
+    transition: background-color 0.5s ease;
+
+    .col {
+        display: table-cell;
+        vertical-align: top;
+        font-size: 14px;
+        font-weight: bold;
+        color: #5c5c5c;
+        max-width: none;
+
+        &.recipe-title {
+            width: 100%;
+            padding: 0 5px;
+        };
+
+        &.recipe-time {
+            min-width: 85px;
+            text-align: right;
+        }
+    }
+
+    &:hover {
+        background: #eee;
+    };
+}
+
+.recipe-detail-name {
+    margin: 6px 0 16px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 12px;
+}
+
+.recipe-detail-summary {
+    margin: 26px 0 0;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 17px;
+}
+
+.recipe-detail-ingredients {
+    border-bottom: 1px solid #ddd;
+}
+
+.recipe-detail-ingredients, .recipe-detail-prep {
+    color: #333333;
+
+    h1 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 17px;
+        margin: 6px 0;
+    }
+
+    ul, ol {
+        list-style-type: none;
+        font-size: 14px;
+        margin: 0 0 20px;
+        padding: 0 5px 0 27px;
+    }
+
+    ol {
+        counter-reset: ol-counter;
+    }
+
+    ul > li {
+        margin: 6px 0;
+    }
+
+    ol > li {
+        margin: 6px 0 16px;
+
+        &:before {
+            position: absolute;
+            top: 0;
+            left: -25px;
+            font-size: 18px;
+            line-height: 1;
+            font-weight: bold;
+            content: counter(ol-counter) ".";
+            counter-increment: ol-counter;
+            letter-spacing: -1px;
+        }
+    }
+}
+
+.recipe-detail-footer {
+    background: #eee;
+    overflow: auto;
+
+    .btn {
+        margin: 5px 0;
+        display: block;
+    }
+}
+
