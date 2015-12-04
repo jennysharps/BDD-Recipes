@@ -1,6 +1,6 @@
 doctype html
 html
-    include ../includes/head.jade
+    include ../includes/_head
     body
         main.recipe-list-container
             header.recipe-header
@@ -20,6 +20,11 @@ html
                                 p.col.recipe-time= recipe.cookingTime + ' min'
 
             else
-                p Sorry, we currently have no recipes for you
+                if pageCount === 0
+                    p.grid-padding Sorry, we currently have no recipes for you
+                else
+                    p.grid-padding Sorry, we've run out of recipes!
 
-    include ../includes/foot.jade
+            include ../includes/_paginate
+
+        include ../includes/_foot

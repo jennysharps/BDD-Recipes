@@ -4,7 +4,8 @@ var express = require('express'),
     app = express(),
     fs = require('fs'),
     sassMiddleware = require("node-sass-middleware"),
-    minify = require('express-minify');
+    minify = require('express-minify'),
+    paginate = require("express-paginate");
 
 
 app.set('port', process.env.PORT || 3000);
@@ -23,7 +24,10 @@ app.use(
 /* The line below should be strung on when not in dev mode */
 // .use(minify());
 
+app.use(paginate.middleware(10, 10));
+
 app.use(express.static(path.join(__dirname, '/../public')));
+app.use(express.static(path.join(__dirname, '/../data')));
 
 // dynamically include routes (Controller)
 fs.readdirSync('./controllers').forEach(function (file) {

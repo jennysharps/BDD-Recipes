@@ -1,0 +1,25 @@
+if paginate.hasPreviousPages || paginate.hasNextPages(pageCount)
+    nav
+        ul.pagination
+            if paginate.hasPreviousPages
+                li
+                    a(href=paginate.href(true) aria-label='Previous')
+                        span(aria-hidden='true') &laquo;
+            else
+                li.disabled
+                    a
+                        span(aria-hidden='true') &laquo;
+
+            if pages
+                each page in pages
+                    li(class=page.number === paginate.page ? "active" : undefined)
+                        a(href=page.url)= page.number
+
+            if paginate.hasNextPages(pageCount)
+                li
+                    a(href=paginate.href(true) aria-label='Next')
+                        span(aria-hidden='true') &raquo;
+            else
+                li.disabled
+                    a
+                        span(aria-hidden='true') &raquo;

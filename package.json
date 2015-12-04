@@ -12,6 +12,7 @@
   "dependencies": {
     "express": "^4.13.3",
     "express-minify": "^0.1.6",
+    "express-paginate": "^0.1.0",
     "jade": "^1.11.0",
     "jasmine-node": "^1.14.5",
     "node-sass-middleware": "^0.9.7",

@@ -1,8 +1,5 @@
-var express   = require('express');
-
-var app = express();
-
 var Recipe = require('../models/recipe');
+var paginate = require('express-paginate');
 
 module.exports.controller = function(app) {
     /**
@@ -14,55 +11,82 @@ module.exports.controller = function(app) {
 
       res.status(200).send(helloWorldArray);
     });*/
-    app.get('/', function(request, response, next) {
-        response.redirect('/recipes');
+    app.get('/', function(req, res, next) {
+        res.redirect('/recipes');
     });
 
     /**
     * a home page route
     */
-    app.get('/recipes', function(request, response, next) {
-        var recipeData = Recipe.getAll();
+    app.get('/recipes', function(req, res, next) {
+        var options = {
+            'page': parseInt(req.query.page, 10),
+            'limit': req.query.limit,
+            'stub': req.query.stub || false
+        };
 
-        response = injectDebugData(request, response);
-        response.render('recipes/list', {recipes: Recipe.getAll()})
+        Recipe.paginate(options, function(err, recipes, pageCount, itemCount) {
+            if (err) return next(err);
+
+            res = injectDebugData(req, res);
+
+            res.format({
+                html: function() {
+                    res.render('recipes/list', {
+                        recipes: recipes,
+                        pageCount: pageCount,
+                        itemCount: itemCount,
+                        pages: paginate.getArrayPages(req)(3, pageCount, options.page)
+                    });
+                },
+                json: function() {
+                // inspired by Stripe's API response for list objects
+                    res.json({
+                        object: 'list',
+                        has_more: paginate.hasNextPages(req)(pageCount),
+                        data: recipes
+                    });
+                }
+            });
+        });
     });
 
     /**
     * single recipes
     */
-    app.get('/recipes/:recipename', function(request, response, next) {
-        var recipeName = request.params.recipename,
+    app.get('/recipes/:recipename', function(req, res, next) {
+        var recipeName = req.params.recipename,
             recipeData = Recipe.getByName(recipeName);
 
-        response = injectDebugData(request, response);
+        res = injectDebugData(req, res);
 
         if(isEmpty(recipeData)) {
-            response.status(404).render('404.jade', {title: '404: File Not Found'});
+            res.status(404).render('404.jade', {title: '404: File Not Found'});
         } else {
-            response.render('recipes/detail', {recipe: recipeData});
+            res.render('recipes/detail', {recipe: recipeData});
         }
     });
 
-    app.use(function(request, response) {
-        response = injectDebugData(request, response);
-        response.status(404);
-        response.render('404.jade', {title: '404: File Not Found'});
+
+    app.use(function(req, res) {
+        res = injectDebugData(req, res);
+        res.status(404);
+        res.render('404.jade', {title: '404: File Not Found'});
     });
 
     function isEmpty(object) {
       return Object.getOwnPropertyNames(object).length === 0;
     }
 
-    function isInDebugMode(request) {
-        return request.query.debug === "true";
+    function isInDebugMode(req) {
+        return req.query.debug === "true";
     }
 
-    function injectDebugData(request, response) {
-        if(isInDebugMode(request)) {
-            response.locals.debug = true;
+    function injectDebugData(req, res) {
+        if(isInDebugMode(req)) {
+            res.locals.debug = true;
         }
 
-        return response;
+        return res;
     }
 }

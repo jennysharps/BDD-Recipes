@@ -2,6 +2,8 @@
  * TODO:  Modular scss filde structure; modules: mixins;
  */
 @import 'resets/normalize';
+@import 'modules/variables';
 @import 'partials/base';
 @import 'partials/recipes';
+@import 'partials/pagination';
 
