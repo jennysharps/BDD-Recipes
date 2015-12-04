@@ -27,20 +27,25 @@ header, .recipe-list {
     padding: 0 6px;
 }
 
+header {
+    width: 100%;
+}
+
 .section-header-title, .section-header-input, .section-header-btn  {
     display: inline-block;
+    vertical-align: middle;
+}
+
+.section-header-title {
+    font-size: 16px;
+}
+
+.section-header-input {
+    margin: 0 15px;
 }
 
 .section-header-btn {
     float: right;
-}
-
-.list {
-    list-style-type: none;
-    margin: 0;
-    width: 100%;
-    border-spacing: 6px;
-    margin: 0 -6px;
 }
 
 .full-width {
@@ -50,13 +55,20 @@ header, .recipe-list {
 .recipe-list-item, .recipe-list-item a {
     display: table;
     width: 100%;
+    border-spacing: 2px;
+    border-collapse: separate;
+    text-decoration: none;
 
     .col {
         display: table-cell;
-        vertical-align: middle;
+        vertical-align: top;
+        font-size: 14px;
+        font-weight: bold;
+        color: grey;
 
         &.recipe-title {
             width: 100%;
+            padding: 0 5px;
         };
 
         &.recipe-time {
@@ -64,4 +76,8 @@ header, .recipe-list {
             text-align: right;
         }
     }
+
+    &:hover {
+        background: #F7F7F7;
+    };
 }
