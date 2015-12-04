@@ -14,42 +14,53 @@ html, body {
     color: grey;
 }
 
-main {
+.recipe-list-container {
     border-top: 2px solid grey;
     border-bottom: 5px solid grey;
 }
 
-header {
-    background: #ebebeb;
-}
-
-header, .recipe-list {
+.recipe-header, .recipe-list {
     padding: 0 6px;
 }
 
-header {
+.recipe-header {
+    background: #ebebeb;
     width: 100%;
-}
+    display: table;
 
-.section-header-title, .section-header-input, .section-header-btn  {
-    display: inline-block;
-    vertical-align: middle;
-}
+    .col {
+        display: table-cell;
+        vertical-align: middle;
 
-.section-header-title {
-    font-size: 16px;
-}
+        & * {
+            display: inline-block;
+        }
+    }
 
-.section-header-input {
-    margin: 0 15px;
-}
+    .recipe-header-title {
+        font-size: 16px;
+    }
 
-.section-header-btn {
-    float: right;
-}
+    .recipe-header-input {
+        margin: 6px 15px;
+        padding: 5px;
+        font-size: 11px;
+    }
 
-.full-width {
-    width: 100%;
+    .recipe-header-sort-btn-container {
+        text-align: right;
+    }
+
+    #recipe-sort-btn {
+        border: none;
+        font-size: 11px;
+        line-height: normal;
+        font-weight: bold;
+        background: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
 }
 
 .recipe-list-item, .recipe-list-item a {
