@@ -1,7 +1,7 @@
 /**
- * TODO:  Modular scss filde structure; modules, mixins, etc
+ * TODO:  Modular scss filde structure; modules: mixins;
  */
-@import 'normalize';
-@import 'base';
-@import 'recipes';
+@import 'resets/normalize';
+@import 'partials/base';
+@import 'partials/recipes';
 

@@ -15,6 +15,7 @@ app.use(
   sassMiddleware({
     src: __dirname + "/../assets/scss",
     dest: __dirname + "/../public/css",
+    prefix:  '/css',
     debug: true
   })
 );

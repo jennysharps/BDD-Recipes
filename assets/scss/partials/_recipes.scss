@@ -141,7 +141,17 @@
 
     .btn {
         margin: 5px 0;
-        display: block;
     }
 }
 
+@media screen and (min-width: 255px) {
+    .recipe-detail-header img {
+        margin: 0 auto;
+    }
+
+    .recipe-detail-name,
+    .recipe-detail-summary {
+        text-align: center;
+        
+    }
+}

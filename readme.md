@@ -8,4 +8,5 @@ A Behavior-Driven Recipe app. Uses [jasmine-node](https://github.com/mhevery/jas
   $ git checkout -b express-jasmine origin/express-jasmine
   $ npm install
   $ npm start
+  $ Visit http://localhost:3000
 ```

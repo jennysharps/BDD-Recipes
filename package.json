@@ -5,7 +5,7 @@
   "main": "app/recipes.js",
   "scripts": {
     "start": "node app/recipes.js",
-    "test": "./node_modules/.bin/jasmine-node spec"
+    "test": "./node_modules/.bin/jasmine-node spec --captureExceptions"
   },
   "author": "Jenny Sharps",
   "license": "ISC",
