@@ -2,9 +2,26 @@ doctype html
 html
     include ../includes/head.jade
     body
-        h1 <strong>The</strong> Individual Recipe
+        article.recipe-detail
+            section.recipe-detail-header
+                h1=recipe.name
+                img(src= recipe.image)
+                p=recipe.summary
 
-        p= recipe.name
-        img(src= recipe.image)
+            section.recipe-detail-ingredients
+                h1 Ingredients
+                each ingredientItem in recipe.ingredients
+                    if ingredientItem.group
+                        h2.ingredient-group-name=ingredientItem.group
+                        ul.ingredients-list.ingredients-multi-group-list
+                            each ingredientName in ingredientItem.ingredients
+                                li=ingredientName
+                    else
+                        ul.ingredients-list.ingredients-single-group-list
+                            li=ingredientItem
+
+
+        footer.recipe-detail-footer
+            a.btn.btn-arrow(href="/recipes") Back
 
         include ../includes/foot.jade
