@@ -2,26 +2,32 @@ doctype html
 html
     include ../includes/head.jade
     body
-        article.recipe-detail
-            section.recipe-detail-header
-                h1=recipe.name
-                img(src= recipe.image)
-                p=recipe.summary
+        div.content-container
+            article.recipe-detail
+                section.recipe-detail-header
+                    h1.recipe-detail-name.grid-padding=recipe.name
+                    img.recipe-main-image(src= recipe.image)
+                    p.recipe-detail-summary.grid-padding=recipe.summary
 
-            section.recipe-detail-ingredients
-                h1 Ingredients
-                each ingredientItem in recipe.ingredients
-                    if ingredientItem.group
-                        h2.ingredient-group-name=ingredientItem.group
-                        ul.ingredients-list.ingredients-multi-group-list
-                            each ingredientName in ingredientItem.ingredients
-                                li=ingredientName
-                    else
-                        ul.ingredients-list.ingredients-single-group-list
-                            li=ingredientItem
+                section.recipe-detail-ingredients.grid-padding
+                    h1 Ingredients
+                    each ingredientItem in recipe.ingredients
+                        if ingredientItem.group
+                            h2.ingredient-group-name=ingredientItem.group
+                            ul.ingredients-list.ingredients-multi-group-list
+                                each ingredientName in ingredientItem.ingredients
+                                    li=ingredientName
+                        else
+                            ul.ingredients-list.ingredients-single-group-list
+                                li=ingredientItem
+                section.recipe-detail-prep.grid-padding
+                    h1 Preparation Method
+                    ol.prep-list
+                        each step in recipe.method
+                            li= recipe.method
 
 
-        footer.recipe-detail-footer
-            a.btn.btn-arrow(href="/recipes") Back
+            footer.recipe-detail-footer.grid-padding
+                a.btn.btn-left-arrow(href="/recipes") Back
 
-        include ../includes/foot.jade
+            include ../includes/foot.jade

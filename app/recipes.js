@@ -14,10 +14,12 @@ app.set('view engine', 'jade');
 app.use(
   sassMiddleware({
     src: __dirname + "/../assets/scss",
-    dest: __dirname + "/../public",
+    dest: __dirname + "/../public/css",
     debug: true
   })
 );
+
+app.use(minify());
 
 app.use(express.static(path.join(__dirname, '/../public')));
 
