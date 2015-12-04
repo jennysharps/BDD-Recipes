@@ -10,15 +10,28 @@ exports.getAll = function(stub) {
     stub = parseInt(stub, 10);
     stub = stub > 300 ? 300 : stub;
 
-    var stubAmount = allData.length - stub,
-        newData = allData;
+    if(stub === 0) {
+        return [];
+    }
+
+    var stubAmount = stub - allData.length,
+        newData = clone(allData);
 
     if(stubAmount > 0) {
+        var i = 0;
         for(x = 0; x < stubAmount; x++) {
-            newData.push(allData[x]);
+            newData.push(allData[i]);
+
+            if(i === allData.length - 1) {
+                i = 0;
+            } else {
+                i++;
+            }
         }
     } else {
-        newData.splice(0, stub);
+        console.log(newData);
+        console.log(stub);
+        newData = newData.splice(0, stub);
     }
 
     return newData;
@@ -39,4 +52,13 @@ exports.paginate = function(options, callback) {
     var newData = allData.slice(skipFrom, skipFrom + resultsPerPage);
 
     callback(null, newData, Math.ceil(allData.length / resultsPerPage) || 1, newData.length);
-} 
+}
+
+function clone(obj) {
+    if (null == obj || "object" != typeof obj) return obj;
+    var copy = obj.constructor();
+    for (var attr in obj) {
+        if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+    }
+    return copy;
+}

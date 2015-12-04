@@ -36,7 +36,7 @@ module.exports.controller = function(app) {
                         recipes: recipes,
                         pageCount: pageCount,
                         itemCount: itemCount,
-                        pages: paginate.getArrayPages(req)(3, pageCount, options.page)
+                        pages: paginate.getArrayPages(req)(options.limit, pageCount, options.page)
                     });
                 },
                 json: function() {
@@ -61,7 +61,7 @@ module.exports.controller = function(app) {
         res = injectDebugData(req, res);
 
         if(isEmpty(recipeData)) {
-            res.status(404).render('404.jade', {title: '404: File Not Found'});
+            res.status(404).render('recipes/404.jade', {title: '404: File Not Found'});
         } else {
             res.render('recipes/detail', {recipe: recipeData});
         }

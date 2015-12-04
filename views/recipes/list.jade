@@ -20,10 +20,10 @@ html
                                 p.col.recipe-time= recipe.cookingTime + ' min'
 
             else
-                if pageCount === 0
+                if itemCount === 0 && !paginate.hasPreviousPages
                     p.grid-padding Sorry, we currently have no recipes for you
                 else
-                    p.grid-padding Sorry, we've run out of recipes!
+                    p.grid-padding Sorry, there are no recipes on this page
 
             include ../includes/_paginate
 
