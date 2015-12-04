@@ -1,4 +1,3 @@
-var generator = require('../app/generator');
 var express   = require('express');
 
 var app = express();

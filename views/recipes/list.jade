@@ -2,15 +2,22 @@ doctype html
 html
     include ../includes/head.jade
     body
-    if recipes.length
-        h1 <strong>The</strong> Recipe List!
+        header
+            h1.title.section-header-title Recipes
+            input.input.section-header-input(type= text placeholder="Filter Recipes")
+            button.btn.section-header-sort-btn Order by cooking time
 
-        ul.recipe-list
-            each recipe in recipes
-                li
-                    p= recipe.name
-                    img(src= recipe.image)
-    else
-        p Sorry, we currently have no recipes for you
+        main
+            if recipes.length
+                ul.recipe-list
+                    each recipe in recipes
+                        li.recipe-list-item
+                            a(href= recipe.href alt=recipe.name)
+                                img.col(src= recipe.image)
+                                h2.col.recipe-title= recipe.name
+                                p.col.recipe-time= recipe.cookingTime + ' min'
+
+            else
+                p Sorry, we currently have no recipes for you
 
     include ../includes/foot.jade

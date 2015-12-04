@@ -11,8 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.13.3",
+    "express-minify": "^0.1.6",
     "jade": "^1.11.0",
     "jasmine-node": "^1.14.5",
+    "node-sass-middleware": "^0.9.7",
     "request": "^2.67.0"
   },
   "devDependencies": {}

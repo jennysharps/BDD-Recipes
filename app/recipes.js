@@ -1,16 +1,25 @@
-var generator = require('./generator'),
-    express = require('express'),
+var express = require('express'),
     http = require('http'),
     path = require('path'),
     app = express(),
-    fs = require('fs');
+    fs = require('fs'),
+    sassMiddleware = require("node-sass-middleware"),
+    minify = require('express-minify');
 
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/../views');
 app.set('view engine', 'jade');
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(
+  sassMiddleware({
+    src: __dirname + "/../assets/scss",
+    dest: __dirname + "/../public",
+    debug: true
+  })
+);
+
+app.use(express.static(path.join(__dirname, '/../public')));
 
 // dynamically include routes (Controller)
 fs.readdirSync('./controllers').forEach(function (file) {
