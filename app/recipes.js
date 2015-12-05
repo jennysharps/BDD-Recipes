@@ -28,6 +28,7 @@ app.use(paginate.middleware(10, 10));
 
 app.use(express.static(path.join(__dirname, '/../public')));
 app.use(express.static(path.join(__dirname, '/../data')));
+app.use(express.static(path.join(__dirname, '/../assets')));
 
 // dynamically include routes (Controller)
 fs.readdirSync('./controllers').forEach(function (file) {

@@ -3,28 +3,29 @@ html
     include ../includes/_head
     body
         main.recipe-list-container
-            header.recipe-header
-                div.col.recipe-header-title-container
-                    h1.title.recipe-header-title Recipes
-                    input.input.recipe-header-input(type=text placeholder="Filter Recipes")
-                div.col.recipe-header-sort-btn-container
-                    button#recipe-sort-btn(data-sort="cooking-time") Order by cooking time
+            div#recipes(data-require-module="recipes/list")
+                header.recipe-header
+                    div.col.recipe-header-title-container
+                        h1.title.recipe-header-title Recipes
+                        input.input.search.recipe-header-input(type=text placeholder="Filter Recipes")
+                    div.col.recipe-header-sort-btn-container
+                        button#recipe-sort-btn.sort(data-sort="cooking-time") Order by cooking time
 
-            if recipes.length
-                ul.recipe-list
-                    each recipe in recipes
-                        li.recipe-list-item
-                            a(href=recipe.href alt=recipe.name)
-                                img.col(src=recipe.image)
-                                h2.col.recipe-title=recipe.name
-                                p.col.recipe-time= recipe.cookingTime + ' min'
+                if recipes.length
+                    ul.recipe-list.list
+                        each recipe in recipes
+                            li.recipe-list-item
+                                a(href=recipe.href alt=recipe.name)
+                                    img.col(src=recipe.image)
+                                    h2.col.recipe-title=recipe.name
+                                    p.col.recipe-time.cooking-time= recipe.cookingTime + ' min'
 
-            else
-                if itemCount === 0 && !paginate.hasPreviousPages
-                    p.grid-padding Sorry, we currently have no recipes for you
                 else
-                    p.grid-padding Sorry, there are no recipes on this page
+                    if itemCount === 0 && !paginate.hasPreviousPages
+                        p.grid-padding Sorry, we currently have no recipes for you
+                    else
+                        p.grid-padding Sorry, there are no recipes on this page
 
-            include ../includes/_paginate
+                include ../includes/_paginate
 
         include ../includes/_foot
