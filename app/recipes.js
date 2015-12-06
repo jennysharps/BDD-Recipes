@@ -24,6 +24,8 @@ app.use(
 /* The line below should be strung on when not in dev mode */
 // .use(minify());
 
+// TODO Minify CSS & JS, uglify JS when not in dev mode
+
 app.use(paginate.middleware(10, 10));
 
 app.use(express.static(path.join(__dirname, '/../public')));

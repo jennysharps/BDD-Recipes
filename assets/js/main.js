@@ -15,7 +15,8 @@ define(['exports', 'utils/requirejs'], function(exports, requireJsUtils) {
 			var moduleEl = modulesToLoadEls[x],
 				moduleName = moduleEl.getAttribute(moduleDataAttr);
 
-
+			/* Traverse the DOM to creat an auto-loading framework;
+			any data-attribute "data-require-module" will be loaded */
 			if(moduleName) {
 				moduleEl.removeAttribute(moduleDataAttr);
 
@@ -37,6 +38,7 @@ define(['exports', 'utils/requirejs'], function(exports, requireJsUtils) {
 		for(x = 0; x < itemsToReqire.length; x++) {
 			var item = itemsToReqire[x];
 
+			/* Logic for module loading in utils/requirejs  */
 			requireJsUtils.loadModule(item.name, item.context);
 		}
 	}

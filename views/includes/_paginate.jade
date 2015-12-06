@@ -3,7 +3,7 @@ if paginate.hasPreviousPages || paginate.hasNextPages(pageCount)
         ul.pagination
             if paginate.hasPreviousPages
                 li
-                    a(href=paginate.href(true) aria-label='Previous')
+                    a(href=paginate.href(true, {page: null, limit: null}) aria-label='Previous')
                         span(aria-hidden='true') &laquo;
             else
                 li.disabled
@@ -17,7 +17,7 @@ if paginate.hasPreviousPages || paginate.hasNextPages(pageCount)
 
             if paginate.hasNextPages(pageCount)
                 li
-                    a(href=paginate.href() aria-label='Next')
+                    a(href=paginate.href(false, {page: null, limit: null}) aria-label='Next')
                         span(aria-hidden='true') &raquo;
             else
                 li.disabled

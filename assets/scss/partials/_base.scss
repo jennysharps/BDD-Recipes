@@ -5,16 +5,16 @@
     position: relative;
 }
 
-img {
-    max-width: 100%;
-    display: block;
-}
-
 html, body {
     margin: 0 auto;
     diplay: block;
     width: 100%;
     color: #5c5c5c;
+}
+
+img {
+    max-width: 100%;
+    display: block;
 }
 
 a[href], button, .btn {
@@ -26,6 +26,10 @@ a[href], button, .btn {
 
 h1 {
     font-size: 30px;
+}
+
+button:focus {
+    outline:0;
 }
 
 .btn {

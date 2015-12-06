@@ -3,8 +3,11 @@ var data = require('../data/stub') || {};
 exports.getAll = function(stub) {
     var allData = data.list || [];
 
+    /* Add ingredients string to insert into template for intermin filtering;
+    TODO: revisit this logic; it should be done via an ajax request,
+    also consider how this affects pagination */
     for(x = 0; x < allData.length; x++) {
-        allData[x].ingredientsStr = allData[x].ingredients.join();
+        allData[x].ingredientsStr = allData[x].ingredients.join(' ');
     }
 
     if(!stub) {

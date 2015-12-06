@@ -39,7 +39,29 @@ module.exports.controller = function(app) {
                     });
                 },
                 json: function() {
-                // inspired by Stripe's API response for list objects
+                    res.json({
+                        object: 'list',
+                        has_more: paginate.hasNextPages(req)(pageCount),
+                        data: recipes
+                    });
+                }
+            });
+        });
+    });
+
+    app.get('/api/recipes', function(req, res, next) {
+        var options = {
+            'page': parseInt(req.query.page, 10),
+            'stub': req.query.stub || false
+        };
+
+        Recipe.paginate(options, function(err, recipes, pageCount, itemCount) {
+            if (err) return next(err);
+
+            res = injectDebugData(req, res);
+
+            res.format({
+                json: function() {
                     res.json({
                         object: 'list',
                         has_more: paginate.hasNextPages(req)(pageCount),

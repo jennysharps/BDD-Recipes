@@ -21,7 +21,7 @@
     }
 
     .recipe-header-input {
-        margin: 6px 15px;
+        margin: 6px 0;
         padding: 5px;
         font-size: 11px;
     }
@@ -144,6 +144,12 @@
     }
 }
 
+.recipe-list-container nav {
+    text-align: center;
+    display: block;
+}
+
+
 @media screen and (min-width: 255px) {
     .recipe-detail-header img {
         margin: 0 auto;
@@ -156,7 +162,8 @@
     }
 }
 
-.recipe-list-container nav {
-    text-align: center;
-    display: block;
+@media screen and (min-width: 375px) {
+    .recipe-header .recipe-header-input {
+        margin: 6px 15px;
+    }
 }
