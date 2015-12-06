@@ -18,19 +18,22 @@ exports.getAll = function(stub) {
         newData = clone(allData);
 
     if(stubAmount > 0) {
-        var i = 0;
+        var i = 0,
+            stubNumber = 2;
+
         for(x = 0; x < stubAmount; x++) {
-            newData.push(allData[i]);
+            var dataItem = clone(allData[i]);
+            dataItem.name += ' ' + stubNumber;
+            newData.push(dataItem);
 
             if(i === allData.length - 1) {
                 i = 0;
+                stubNumber++;
             } else {
                 i++;
             }
         }
     } else {
-        console.log(newData);
-        console.log(stub);
         newData = newData.splice(0, stub);
     }
 
@@ -43,7 +46,7 @@ exports.getByName = function(recipeName) {
 
 exports.paginate = function(options, callback) {
     var pageNumber = options.page || 1;
-    var resultsPerPage = options.limit || 10;
+    var resultsPerPage = 10;
     var stub = options.stub || false;
 
     var allData = exports.getAll(stub);

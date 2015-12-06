@@ -21,7 +21,6 @@ module.exports.controller = function(app) {
     app.get('/recipes', function(req, res, next) {
         var options = {
             'page': parseInt(req.query.page, 10),
-            'limit': req.query.limit,
             'stub': req.query.stub || false
         };
 
@@ -36,7 +35,7 @@ module.exports.controller = function(app) {
                         recipes: recipes,
                         pageCount: pageCount,
                         itemCount: itemCount,
-                        pages: paginate.getArrayPages(req)(options.limit, pageCount, options.page)
+                        pages: paginate.getArrayPages(req)(3, pageCount, options.page)
                     });
                 },
                 json: function() {

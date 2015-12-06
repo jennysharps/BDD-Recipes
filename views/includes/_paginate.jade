@@ -17,7 +17,7 @@ if paginate.hasPreviousPages || paginate.hasNextPages(pageCount)
 
             if paginate.hasNextPages(pageCount)
                 li
-                    a(href=paginate.href(true) aria-label='Next')
+                    a(href=paginate.href() aria-label='Next')
                         span(aria-hidden='true') &raquo;
             else
                 li.disabled
