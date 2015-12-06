@@ -3,7 +3,10 @@
  */
 @import 'resets/normalize';
 @import 'modules/variables';
+@import 'modules/mixins';
+@import 'partials/util';
 @import 'partials/base';
-@import 'partials/recipes';
+@import 'partials/animation';
 @import 'partials/pagination';
+@import 'partials/recipes';
 

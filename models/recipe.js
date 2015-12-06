@@ -3,6 +3,10 @@ var data = require('../data/stub') || {};
 exports.getAll = function(stub) {
     var allData = data.list || [];
 
+    for(x = 0; x < allData.length; x++) {
+        allData[x].ingredientsStr = allData[x].ingredients.join();
+    }
+
     if(!stub) {
         return allData;
     }

@@ -1,0 +1,40 @@
+// ********************
+// fadeIn
+// ********************
+@mixin keyframe-fadeIn {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+@keyframes fadein {
+    @include keyframe-fadeIn;
+}
+
+@-moz-keyframes fadein {
+    @include keyframe-fadeIn;
+}
+
+@-webkit-keyframes fadein {
+    @include keyframe-fadeIn;
+}
+
+@-o-keyframes fadein {
+    @include keyframe-fadeIn;
+}
+
+@-ms-keyframes fadein {
+    @include keyframe-fadeIn;
+}
+
+@mixin fadeIn($duration) {
+    $keyframe-name:fadein;
+    animation:$keyframe-name $duration;
+    -moz-animation:$keyframe-name $duration;
+    -webkit-animation:$keyframe-name $duration;
+    -o-animation:$keyframe-name $duration;
+    -ms-animation:$keyframe-name $duration;
+}

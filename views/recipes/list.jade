@@ -12,13 +12,14 @@ html
                         button#recipe-sort-btn.sort(data-sort="cooking-time") Order by cooking time
 
                 if recipes.length
-                    ul.recipe-list.list
+                    ul.recipe-list.list.fade-in
                         each recipe in recipes
                             li.recipe-list-item
                                 a(href=recipe.href alt=recipe.name)
                                     img.col(src=recipe.image)
                                     h2.col.recipe-title=recipe.name
-                                    p.col.recipe-time.cooking-time= recipe.cookingTime + ' min'
+                                    p.col.recipe-time.cooking-time= recipe.cookingTime + ' minutes'
+                                    span.ingredients.hidden= recipe.ingredientsStr
 
                 else
                     if itemCount === 0 && !paginate.hasPreviousPages

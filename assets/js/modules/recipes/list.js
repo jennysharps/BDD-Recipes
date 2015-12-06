@@ -5,29 +5,47 @@ define(["exports", "utils/requirejs"],function(exports, requireUtils) {
     };
 
     var searchOptions = {
-        valueNames: ['recipe-title'],
+        valueNames: ['recipe-title', 'ingredients'],
         sortClass: null
     };
 
     var searchList,
         sortList,
-        List;
+        List,
+        searchEndTimer;
 
     function init(context) {
         if(!require.defined('libs/list')) {
             require(['libs/list'], function(module) {
                 List = module;
-                setRecipeList();
+                initRecipeList();
             });
         } else {
             List = require('libs/list');
-            setRecipeList();
+            initRecipeList();
         }        
     };
     exports.init = init;
 
+    function initRecipeList() {
+        setRecipeList();
+        addEvents();
+    }
+
     function setRecipeList() {
         searchList = new List('recipes', searchOptions);
         sortList = new List('recipes', sortOptions);
+    }
+
+    function addEvents() {
+        searchList.on('searchComplete', function(listObj) {
+            clearTimeout(searchEndTimer);
+
+            searchEndTimer = setTimeout(function() {  
+                if (!listObj.matchingItems.length) {
+                    listObj.list.innerHTML = '<li class="fade-in">Sorry, nothing matched your filter term</li>'
+                }  
+            }, 250);
+        });
     }
 });
