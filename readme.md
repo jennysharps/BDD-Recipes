@@ -10,6 +10,5 @@ A Behavior-Driven Recipe app. Uses [jasmine-node](https://github.com/mhevery/jas
   $ npm test
 ```
 
-Running npm start will allow you to visit [http://localhost:3000](http://localhost:3000) to see the app
-
-Running npm test will output the results of all tests in the console
+- Running npm start will allow you to visit [http://localhost:3000](http://localhost:3000) to see the app
+- Running npm test will output the results of all tests in the console
