@@ -7,7 +7,7 @@
     "start": "node app/recipes.js",
     "test": "npm run test-cucumber && npm run test-jasmine",
     "test-cucumber": "./node_modules/.bin/cucumber.js",
-    "test-jasmine": "./node_modules/.bin/jasmine-node spec --captureExceptions --verbose"
+    "test-jasmine": "./node_modules/.bin/jasmine-node spec --captureExceptions --verbose --junitreport --output spec"
   },
   "author": "Jenny Sharps",
   "license": "ISC",
