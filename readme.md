@@ -7,6 +7,8 @@ A Behavior-Driven Recipe app. Uses [jasmine-node](https://github.com/mhevery/jas
   $ cd BDD-Recipes
   $ npm install
   $ npm start
-  $ Visit [http://localhost:3000](http://localhost:3000)
   $ npm test
 ```
+
+Visit [http://localhost:3000](http://localhost:3000) to visit the app
+View output of tests in the console
